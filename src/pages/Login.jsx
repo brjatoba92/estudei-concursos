@@ -21,7 +21,7 @@ function Login() {
 
     return (
         <div className="max-w-md mx-auto mt-10 mg-white p-8 rounded shadow">
-            <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">Página de Login</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">Acesse a plataforma</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-gray-700 mb-2">Email</label>
