@@ -8,6 +8,8 @@ import Settings from "../pages/Settings";
 import Simulados from "../pages/Simulados";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Dashboard from "../pages/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 function AppRoutes() {
     return (
@@ -20,6 +22,16 @@ function AppRoutes() {
             <Route path="/simulados" element={<Simulados />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+                path="/dashboard"
+                element={
+                    <PrivateRoute>
+                        <Dashboard/>
+                    </PrivateRoute>
+                } 
+            />
+
         </Routes>
     );
 }
