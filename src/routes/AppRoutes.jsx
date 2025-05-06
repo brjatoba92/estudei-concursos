@@ -10,6 +10,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import Perfil from "../pages/Perfil";
+import Questoes from "../pages/Questoes";
 
 function AppRoutes() {
     return (
@@ -31,7 +33,22 @@ function AppRoutes() {
                     </PrivateRoute>
                 } 
             />
-
+            <Route
+                path="/perfil"
+                element={
+                    <PrivateRoute>
+                        <Perfil/>
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/questoes"
+                element={
+                    <PrivateRoute>
+                        <Questoes/>
+                    </PrivateRoute>
+                }
+            />
         </Routes>
     );
 }
