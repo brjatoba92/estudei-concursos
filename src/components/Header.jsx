@@ -27,7 +27,9 @@ function Header() {
                     <Link to="/simulados" className="hover:underline">
                         Simulados
                     </Link>
-                    <Link to="/login" className="hover:underline">Entrar</Link>
+                    <Link to="/login" className="hover:underline">
+                        Entrar
+                    </Link>
                     {/* <Link to="/dashboard">Painel</Link> */}
                 </nav>
             </div>
