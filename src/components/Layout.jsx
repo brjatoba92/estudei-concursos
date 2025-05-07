@@ -1,58 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
-function Layout({ children, user }) {
-    const handleLogout = () => {
-        auth.signOut();
-    };
-    return (
-        <div className="min-h-screen flex flex-col">
-            {/* Topbar */}
-            <header className="bg-green-700 text-white p-4 flex justify-between items-center">
-                <h1 className="text-xl font-bold">Estudei Concursos</h1>
-                {user && (
-                    <div className="flex items-center gap-3 text-right">
-                        {user.photoURL ? (
-                            <img
-                                src={user.photoURL}
-                                alt="Avatar"
-                                className="w-10 h-10 rounded-full object-cover"
-                            />
-                        ) : (
-                                <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold">
-                                    {user.displayName?.charAt(0) || "U"}
-                                </div>
-                            )}
-                        <div>
-                            <p>Olá, {user.displayName || "Usuário"}</p>
-                            <p className="text-sm">{user.email}</p>
-                        </div>
-                    </div>
-                )}
-            </header>
-            {/* Navbar horizontal */}
-            <nav className="bg-green-600 text-white flex justify-center space-x-6 py-3">
-                <Link to="/dashboard" className="hover:underline">Início</Link>
-                <Link to="/estudo" className="hover:underline">Estudo</Link>
-                <Link to="/materias" className="hover:underline">Matérias</Link>
-                <Link to="/revisoes" className="hover:underline">Revisões</Link>
-                <Link to="/settings" className="hover:underline">Configurações</Link>
-                <Link to="/simulados" className="hover:underline">Simulados</Link>
-                <button
-                    onClick={handleLogout}
-                    className="bg-red-500 px-3 py-1 rounded hover:bg-red-600"
-                >
-                    Sair
-                </button>
-            </nav>
+function Layout({ children }) {
+  const [user, setUser] = useState(null);
 
-            {/* Conteúdo principal */}
-            <main className="flex-1 bg-gray-100 p-6">
-                {children}
-            </main>
-        </div>
-    );
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <div>
+      <Header user={user} />
+      <div className="flex">
+        <Sidebar />
+        <main className="flex-1 p-6 bg-gray-100 min-h-screen">{children}</main>
+      </div>
+    </div>
+  );
 }
 
 export default Layout;
