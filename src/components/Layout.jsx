@@ -6,20 +6,31 @@ function Layout({ children, user }) {
     const handleLogout = () => {
         auth.signOut();
     };
-
     return (
         <div className="min-h-screen flex flex-col">
             {/* Topbar */}
             <header className="bg-green-700 text-white p-4 flex justify-between items-center">
                 <h1 className="text-xl font-bold">Estudei Concursos</h1>
                 {user && (
-                    <div className="text-right">
-                        <p>Olá, {user.displayName || "Usuário"}</p>
-                        <p className="text-sm">{user.email}</p>
+                    <div className="flex items-center gap-3 text-right">
+                        {user.photoURL ? (
+                            <img
+                                src={user.photoURL}
+                                alt="Avatar"
+                                className="w-10 h-10 rounded-full object-cover"
+                            />
+                        ) : (
+                                <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold">
+                                    {user.displayName?.charAt(0) || "U"}
+                                </div>
+                            )}
+                        <div>
+                            <p>Olá, {user.displayName || "Usuário"}</p>
+                            <p className="text-sm">{user.email}</p>
+                        </div>
                     </div>
                 )}
             </header>
-
             {/* Navbar horizontal */}
             <nav className="bg-green-600 text-white flex justify-center space-x-6 py-3">
                 <Link to="/dashboard" className="hover:underline">Início</Link>
