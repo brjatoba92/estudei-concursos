@@ -1,16 +1,17 @@
+// src/pages/Home.jsx
 import React from "react";
+import HeaderPublic from "../components/HeaderPublic";
 
-function Home(){
-    return (
-        <div className="text-center">
-            <h1 className="text-4xl font-bold text-blue-700 mb-4">
-                Bem vindo ao Estudei Concursos
-            </h1>
-            <p className="text-lg text-gray-700">
-                Organize seus estudos, acompanhe seu progresso e conquiste sua aprovação
-            </p>
-        </div>
-    )
+function Home() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <HeaderPublic />
+      <main className="flex-1 container mx-auto p-6">
+        <h2 className="text-3xl font-bold text-blue-700 mb-4">Bem-vindo ao Estudei Concursos</h2>
+        <p className="text-gray-700">Organize seus estudos, acompanhe seu progresso e prepare-se com eficiência.</p>
+      </main>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
