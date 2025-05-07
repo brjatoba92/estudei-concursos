@@ -17,29 +17,30 @@ function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            {/* Rotas públicas de navegação geral (se necessário) */}
             <Route path="/estudo" element={<Estudo />} />
             <Route path="/materias" element={<Materias />} />
             <Route path="/revisoes" element={<Revisoes />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/simulados" element={<Simulados />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/perfil" element={<Perfil />} />
-            <Route path="/questoes" element={<Questoes />} />
+
+            {/* Rotas protegidas */}
             <Route
                 path="/dashboard"
                 element={
                     <PrivateRoute>
-                        <Dashboard/>
+                        <Dashboard />
                     </PrivateRoute>
-                } 
+                }
             />
             <Route
                 path="/perfil"
                 element={
                     <PrivateRoute>
-                        <Perfil/>
+                        <Perfil />
                     </PrivateRoute>
                 }
             />
@@ -47,7 +48,7 @@ function AppRoutes() {
                 path="/questoes"
                 element={
                     <PrivateRoute>
-                        <Questoes/>
+                        <Questoes />
                     </PrivateRoute>
                 }
             />
