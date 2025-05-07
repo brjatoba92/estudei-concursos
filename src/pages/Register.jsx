@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 
 function Register() {
@@ -27,6 +27,7 @@ function Register() {
 
         try {
             await createUserWithEmailAndPassword(auth, email, password);
+            await updateProfile(auth.currentUser, { displayName: name });
             navigate("/dashboard");
         } catch (error) {
             setErro("Email ou senha invalidos");

@@ -1,38 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ user }) {
     return (
-        <header className="bg-blue-700 text-white shadow">
-            <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-                <Link to="/" className="text-2xl font-bold tracking-wide">
-                    Estudei Concursos
-                </Link>
-                <nav className="space-x-4">
-                    <Link to="/" className="hover:underline">
-                        Início
-                    </Link>
-                    <Link to="/estudo" className="hover:underline">
-                        Estudo
-                    </Link>
-                    <Link to="/materias" className="hover:underline">
-                        Materias
-                    </Link>
-                    <Link to="/revisoes" className="hover:underline">
-                        Revisões
-                    </Link>
-                    <Link to="/settings" className="hover:underline">
-                        Configurações
-                    </Link>
-                    <Link to="/simulados" className="hover:underline">
-                        Simulados
-                    </Link>
-                    <Link to="/login" className="hover:underline">
-                        Entrar
-                    </Link>
-                    {/* <Link to="/dashboard">Painel</Link> */}
-                </nav>
-            </div>
+        <header className="bg-blue-700 text-white py-4 px-6 flex justify-between shadow">
+            <h1 className="text-xl font-bold">Estudei Concursos</h1>
+            { user && (
+                <div className="text-right text-sm">
+                    <p>Ola, {user.displayName || "Usuario"}</p>
+                    <p className="text-grau-200">{user.email}</p>
+                </div>
+            )}
         </header>
     )
 }
