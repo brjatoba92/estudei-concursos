@@ -25,6 +25,8 @@ function AppRoutes() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/questoes" element={<Questoes />} />
             <Route
                 path="/dashboard"
                 element={
