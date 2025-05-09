@@ -47,11 +47,11 @@ function Header({ user }) {
                 Perfil
               </Link>
               <Link
-                to="/perfil"
+                to="/change-name-pwd"
                 className="block px-4 py-2 hover:bg-gray-100"
                 onClick={() => setMenuOpen(false)}
               >
-                Alterar Nome e Senha
+                Editar perfil
               </Link>
               <Link
                 to="/settings"
