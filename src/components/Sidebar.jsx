@@ -22,15 +22,9 @@ function Sidebar() {
         <Link to="/estudo">Estudo</Link>
         <Link to="/materias">Matérias</Link>
         <Link to="/revisoes">Revisões</Link>
-        <Link to="/settings">Configurações</Link>
         <Link to="/simulados">Simulados</Link>
       </nav>
-      <button
-        onClick={handleLogout}
-        className="mt-auto bg-red-500 py-2 rounded hover:bg-red-600"
-      >
-        Sair
-      </button>
+      
     </aside>
   );
 }
