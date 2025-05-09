@@ -12,6 +12,7 @@ import Dashboard from "../pages/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Perfil from "../pages/Perfil";
 import Questoes from "../pages/Questoes";
+import ChangeNamePassword from "../pages/ChangeNamePassword";
 
 function AppRoutes() {
     return (
@@ -49,6 +50,14 @@ function AppRoutes() {
                 element={
                     <PrivateRoute>
                         <Questoes />
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/change-name-pwd"
+                element={
+                    <PrivateRoute>
+                        <ChangeNamePassword />
                     </PrivateRoute>
                 }
             />
