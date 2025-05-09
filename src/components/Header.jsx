@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebaseConfig";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
 function Header({ user }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,10 +18,12 @@ function Header({ user }) {
 
   return (
     <header className="bg-blue-700 text-white py-4 px-6 flex justify-between items-center shadow relative">
-      <h1 className="text-xl font-bold">
-        <Link to="/">Estudei Concursos</Link>
-      </h1>
-
+      <div className="flex items-center gap-x-2">
+        <Bars3Icon className="w-8 h-8 text-white cursor-pointer"/>
+        <h1 className="text-xl font-bold">
+          <Link to="/dashboard">Estudei Concursos</Link>
+        </h1>
+      </div>
       {user && (
         <div className="flex items-center space-x-4 relative">
           <div className="text-right text-sm">
