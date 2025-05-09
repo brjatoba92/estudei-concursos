@@ -6,21 +6,24 @@ import Sidebar from "./Sidebar";
 
 function Layout({ children }) {
   const [user, setUser] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-
     return () => unsubscribe();
   }, []);
 
   return (
-    <div>
-      <Header user={user} />
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 p-6 bg-gray-100 min-h-screen">{children}</main>
+    <div className="flex h-screen">
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+      <div className="flex flex-col flex-1 overflow-hidden">
+        <Header user={user} setSidebarOpen={setSidebarOpen} />
+        <main className="flex-1 overflow-y-auto bg-gray-100 p-4">
+          {children}
+        </main>
       </div>
     </div>
   );
